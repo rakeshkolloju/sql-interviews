@@ -1,0 +1,29 @@
+WITH event_data AS (
+  SELECT 1 AS ID, '100m' AS event, 2016 AS YEAR, 'Amthhew Mcgarray' AS GOLD, 'donald' AS SILVER, 'barbara' AS BRONZE UNION ALL
+  SELECT 2, '200m', 2016, 'Nichole', 'Alvaro Eaton', 'janet Smith' UNION ALL
+  SELECT 3, '500m', 2016, 'Charles', 'Nichole', 'Susana' UNION ALL
+  SELECT 4, '100m', 2016, 'Ronald', 'maria', 'paula' UNION ALL
+  SELECT 5, '200m', 2016, 'Alfred', 'carol', 'Steven' UNION ALL
+  SELECT 6, '500m', 2016, 'Nichole', 'Alfred', 'Brandon' UNION ALL
+  SELECT 7, '100m', 2016, 'Charles', 'Dennis', 'Susana' UNION ALL
+  SELECT 8, '200m', 2016, 'Thomas', 'Dawn', 'catherine' UNION ALL
+  SELECT 9, '500m', 2016, 'Thomas', 'Dennis', 'paula' UNION ALL
+  SELECT 10, '100m', 2016, 'Charles', 'Dennis', 'Susana' UNION ALL
+  SELECT 11, '200m', 2016, 'jessica', 'Donald', 'Stefeney' UNION ALL
+  SELECT 12, '500m', 2016, 'Thomas', 'Steven', 'Catherine'
+)
+,x as (
+select GOLD swimmer,'gold' g from event_data 
+union all
+
+select SILVER,'silver' from event_data 
+union all
+
+select BRONZE,'bronze' from event_data )
+select * from  x;
+select swimmer ,count(1)ct from x  group by swimmer having count(distinct g)=1 and max(g)='gold'
+
+
+-- ,gold as (select GOLD swimmer,count(1)ct from event_data group by 1)
+-- select swimmer,ct from gold g left join event_data e1 on g.swimmer=e1.SILVER 
+-- left join event_data e2 on g.swimmer=e2.BRONZE  where e1.SILVER is null  or e1.BRONZE is null 
