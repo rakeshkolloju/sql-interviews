@@ -1,0 +1,61 @@
+sales_date | amount
+09/09      | 5000
+09/12      | 4000
+09/13      | 4500
+09/14      | 5000
+09/16      | 3000
+
+SQL query will identify and return the longest continuous sequence of increasing or stable amount values.
+O/p Should be
+sales_date | amount
+09/12      | 4000
+09/13      | 4500
+09/14      | 5000
+
+Answer :
+WITH sales_data AS (
+    SELECT '09/09' AS sales_date, 5000 AS amount
+    UNION ALL
+    SELECT '09/12', 4000
+    UNION ALL
+    SELECT '09/13', 4500
+    UNION ALL
+    SELECT '09/14', 5000
+    UNION ALL
+    SELECT '09/16', 3000
+)
+, sequence_breaks AS (
+    SELECT 
+        sales_date,
+        amount,
+        LAG(amount) OVER (ORDER BY sales_date) AS prev_amount,
+        CASE 
+            WHEN LAG(amount) OVER (ORDER BY sales_date) IS NULL THEN 0
+            WHEN amount >= LAG(amount) OVER (ORDER BY sales_date) THEN 0
+            ELSE 1 
+        END AS is_break
+    FROM 
+        sales_data
+),
+grouped_sequences AS (
+    SELECT 
+        sales_date,
+        amount,
+        SUM(is_break) OVER (ORDER BY sales_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS group_num
+    FROM 
+        sequence_breaks
+)
+SELECT 
+    sales_date, amount
+FROM 
+    grouped_sequences
+WHERE 
+    group_num = (
+        SELECT group_num
+        FROM grouped_sequences
+        GROUP BY group_num
+        ORDER BY COUNT(*) DESC
+        LIMIT 1
+    );
+
+
