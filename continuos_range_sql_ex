@@ -1,0 +1,146 @@
+Absolutely! Here are several similar problems that involve finding patterns or sequences within datasets using SQL and window functions. These problems can help you practice using CTEs, window functions, and analytic queries to detect patterns in time-series data or continuous sequences.
+
+Problem 1: Detecting Continuous Price Increases
+You are given a dataset of stock prices. Write a query to find the longest continuous sequence where the price of the stock increases day after day.
+
+Input Data:
+
+date	stock_price
+2024-01-01	100
+2024-01-02	101
+2024-01-03	102
+2024-01-04	100
+2024-01-05	105
+2024-01-06	106
+2024-01-07	104
+Expected Output:
+
+date	stock_price
+2024-01-05	105
+2024-01-06	106
+Approach: Detect where the price decreases, then group rows based on continuous increases.
+
+Problem 2: Finding Maximum Consecutive Attendance
+You are given a dataset of student attendance records. Write a query to find the longest streak of consecutive days a student was present.
+
+Input Data:
+
+student_id	date	attendance
+1	2024-01-01	Present
+1	2024-01-02	Absent
+1	2024-01-03	Present
+1	2024-01-04	Present
+1	2024-01-05	Absent
+1	2024-01-06	Present
+1	2024-01-07	Present
+Expected Output:
+
+date	attendance
+2024-01-06	Present
+2024-01-07	Present
+Approach: Track where "Absent" breaks a streak and find the longest streak of continuous "Present" days.
+
+Problem 3: Longest Consecutive Sales Above Target
+You are given a dataset of daily sales data for a company. Write a query to find the longest streak of consecutive days where sales were above the target amount.
+
+Input Data:
+
+date	sales	target
+2024-01-01	500	450
+2024-01-02	400	450
+2024-01-03	600	450
+2024-01-04	650	450
+2024-01-05	450	450
+2024-01-06	700	450
+2024-01-07	300	450
+Expected Output:
+
+date	sales
+2024-01-03	600
+2024-01-04	650
+Approach: Detect when sales fall below the target, and group continuous sequences of sales above the target.
+
+Problem 4: Identifying Longest Stable Temperature Period
+You are given a dataset of daily temperatures. Write a query to find the longest period during which the temperature did not change (i.e., the longest period with the same temperature).
+
+Input Data:
+
+date	temperature
+2024-01-01	70
+2024-01-02	70
+2024-01-03	71
+2024-01-04	71
+2024-01-05	70
+2024-01-06	70
+2024-01-07	70
+Expected Output:
+
+date	temperature
+2024-01-05	70
+2024-01-06	70
+2024-01-07	70
+Approach: Group by consecutive rows with the same temperature value and find the longest period.
+
+Problem 5: Maximum Consecutive Production Days
+You are given a dataset representing daily production quantities at a factory. Write a query to find the longest streak of consecutive days where production was non-zero (i.e., where the factory was producing).
+
+Input Data:
+
+date	production
+2024-01-01	100
+2024-01-02	0
+2024-01-03	150
+2024-01-04	200
+2024-01-05	0
+2024-01-06	300
+2024-01-07	400
+Expected Output:
+
+date	production
+2024-01-06	300
+2024-01-07	400
+Approach: Detect breaks in production where production = 0 and find the longest streak of non-zero production.
+
+Problem 6: Finding Longest Upward Trend in Stock Prices
+You are given a dataset of stock prices. Write a query to find the longest streak where stock prices increased day over day.
+
+Input Data:
+
+date	stock_price
+2024-01-01	100
+2024-01-02	105
+2024-01-03	102
+2024-01-04	108
+2024-01-05	112
+2024-01-06	110
+2024-01-07	115
+Expected Output:
+
+date	stock_price
+2024-01-04	108
+2024-01-05	112
+Approach: Compare each day’s stock price with the previous day’s price, detect breaks in increasing trends, and find the longest sequence of increasing prices.
+
+Problem 7: Longest Period Above Average Performance
+You are given a dataset of daily employee performance scores. Write a query to find the longest streak of consecutive days where the performance score was above the daily average performance.
+
+Input Data:
+
+date	score	avg_score
+2024-01-01	90	85
+2024-01-02	80	85
+2024-01-03	95	85
+2024-01-04	100	85
+2024-01-05	85	85
+2024-01-06	105	85
+2024-01-07	75	85
+Expected Output:
+
+date	score
+2024-01-03	95
+2024-01-04	100
+Approach: Detect where score >= avg_score and find the longest sequence of consecutive days where performance exceeded the average.
+
+These problems all involve detecting patterns or breaks in sequences, either based on comparisons between rows or between columns. You can solve them using window functions like LAG(), LEAD(), ROW_NUMBER(), and others, combined with CTEs to handle intermediate steps.
+
+Let me know if you need SQL solutions for any of these problems!
