@@ -144,3 +144,57 @@ Approach: Detect where score >= avg_score and find the longest sequence of conse
 These problems all involve detecting patterns or breaks in sequences, either based on comparisons between rows or between columns. You can solve them using window functions like LAG(), LEAD(), ROW_NUMBER(), and others, combined with CTEs to handle intermediate steps.
 
 Let me know if you need SQL solutions for any of these problems!
+
+
+
+Certainly! Here are a variety of SQL scenario questions similar to the one you provided, focusing on identifying trends, patterns, and specific conditions within user behavior data. Each question involves some combination of joins, LAG/LEAD, window functions, or date manipulation.
+
+1. Identifying Frequent Users
+Scenario: You have two tables: Users (with id and name) and Logins (with user_id and login_date). Identify users who logged in at least 10 times within any 30-day window. Return their id and name.
+
+2. Longest Consecutive Login Streak
+Scenario: Given a Users table (with id and name) and a Logins table (with user_id and login_date), write a query to find each user's longest streak of consecutive daily logins. Return the id, name, and longest_streak for each user.
+
+3. Users Who Logged in Every Weekend
+Scenario: Using Users (with id and name) and Logins (with user_id and login_date), find all users who have logged in on every Saturday and Sunday over the past three months. Return the user id and name.
+
+4. Users with Monthly Login Increase
+Scenario: You have Users (with id and name) and Logins (with user_id and login_date). Identify users who increased their monthly login count each month over the past three months. Return the user id and name.
+
+5. Identifying Inactive Users
+Scenario: Given Users (with id and name) and Logins (with user_id and login_date), find users who have not logged in for at least 60 consecutive days. Return their id and name.
+
+6. Users Who Login at Specific Times
+Scenario: Suppose you have a Users table and a Logins table where Logins has columns for user_id, login_date, and login_time. Find users who consistently log in between 9:00 AM and 11:00 AM every day for a minimum of 7 consecutive days. Return their id and name.
+
+7. Monthly Average Login Streaks
+Scenario: Given Users and Logins, write a query to calculate each user’s average consecutive login streak length for each month. Return columns for user_id, month, and average_streak_length.
+
+8. Returning Users
+Scenario: Given Users and Logins, identify users who did not log in during a given month but returned the following month. Return the id, name, and missed_month of these users.
+
+9. Finding Churned Users
+Scenario: Suppose you have Users and Logins, with Logins including a user_id and login_date. Find users who logged in at least 3 times in the past six months but did not log in at all in the last 30 days. Return their id and name.
+
+10. Finding Accounts with Consistent Weekly Activity
+Scenario: Using Users and Logins, find users who logged in at least once every week for the past eight weeks. Return the id and name of these consistent users.
+
+11. Users with Declining Weekly Logins
+Scenario: Given Users and Logins, identify users whose weekly login count has declined each week over the past four weeks. Return the user id and name.
+
+12. Users with Only Weekend Logins
+Scenario: Using Users and Logins, identify users who only log in on weekends (Saturday and Sunday) over the past two months. Return the user id and name.
+
+13. New Users with High Engagement
+Scenario: Suppose Users has an id, name, and signup_date, while Logins has user_id and login_date. Find users who signed up in the past month and logged in at least 15 times in that month. Return the id and name of these highly engaged new users.
+
+14. Identifying Early Morning and Late Night Users
+Scenario: Given Users and Logins, where Logins has login_time in addition to user_id and login_date, find users who consistently log in either before 6:00 AM or after 10:00 PM at least 5 days a week. Return their id and name.
+
+15. Identifying Users with Irregular Login Patterns
+Scenario: Using Users and Logins, identify users who have a gap of at least 15 days between any two consecutive logins. Return the id and name of these users with irregular login patterns.
+
+16. Users Logging in Across Multiple Devices
+Scenario: Suppose Logins has an additional column device_id. Find users who log in on more than 3 unique devices over any 7-day period. Return their id and name.
+
+These scenarios are designed to test SQL skills, including joins, window functions, date manipulation, grouping, filtering, and the use of conditional logic. They’re great for refining skills in identifying user behaviors and understanding different login patterns. Let me know if you'd like any specific solutions to these!
